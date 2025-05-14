@@ -1,0 +1,99 @@
+@ComputerStore.WebApi_HostAddress = http://localhost:5195
+
+### Get all categories
+GET {{ComputerStore.WebApi_HostAddress}}/api/categories
+Accept: application/json
+
+### Get category by ID
+GET {{ComputerStore.WebApi_HostAddress}}/api/categories/1
+Accept: application/json
+
+### Create new category
+POST {{ComputerStore.WebApi_HostAddress}}/api/categories
+Content-Type: application/json
+
+{
+  "name": "Processors",
+  "description": "Computer processors and CPUs"
+}
+
+### Update category
+PUT {{ComputerStore.WebApi_HostAddress}}/api/categories/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Updated CPU Category",
+  "description": "Updated description"
+}
+
+### Delete category
+DELETE {{ComputerStore.WebApi_HostAddress}}/api/categories/1
+
+### Get all products
+GET {{ComputerStore.WebApi_HostAddress}}/api/products
+Accept: application/json
+
+### Get product by ID
+GET {{ComputerStore.WebApi_HostAddress}}/api/products/1
+Accept: application/json
+
+### Create new product
+POST {{ComputerStore.WebApi_HostAddress}}/api/products
+Content-Type: application/json
+
+{
+  "name": "Intel Core i9",
+  "description": "High performance processor",
+  "price": 499.99,
+  "categoryIds": [1]
+}
+
+### Update product
+PUT {{ComputerStore.WebApi_HostAddress}}/api/products/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Updated Intel Core i9",
+  "description": "Updated description",
+  "price": 599.99,
+  "categoryIds": [1, 2]
+}
+
+### Delete product
+DELETE {{ComputerStore.WebApi_HostAddress}}/api/products/1
+
+### Import products
+POST {{ComputerStore.WebApi_HostAddress}}/api/products/import
+Content-Type: application/json
+
+[
+  {
+    "Name": "Intel's Core i9-9900K",
+    "Categories": ["CPU"],
+    "Price": 475.99,
+    "Quantity": 2
+  },
+  {
+    "Name": "Razer BlackWidow Keyboard",
+    "Categories": ["Keyboard", "Periphery"],
+    "Price": 89.99,
+    "Quantity": 10
+  }
+]
+
+### Calculate discount
+POST {{ComputerStore.WebApi_HostAddress}}/api/products/calculate-discount
+Content-Type: application/json
+
+[
+  {
+    "ProductId": 1,
+    "Quantity": 2
+  },
+  {
+    "ProductId": 2,
+    "Quantity": 1
+  }
+]
