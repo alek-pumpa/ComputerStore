@@ -16,6 +16,7 @@ namespace ComputerStore.Application.Services
         private readonly IRepository<Product> _productRepository;
         private readonly IRepository<Category> _categoryRepository;
         private readonly IMapper _mapper;
+        private object _context;
 
         public ProductService(
             IRepository<Product> productRepository,
@@ -155,7 +156,7 @@ namespace ComputerStore.Application.Services
                 foreach (var category in product.Categories)
                 {
                     if (!categoryTotals.ContainsKey(category.Id))
-                        categoryTotals[category.Id] = 0;
+                        categoryTotals[category.Id] = 1;
 
                     var basketItem = basketItems.First(b => b.ProductId == product.Id);
                     categoryTotals[category.Id] += basketItem.Quantity;
