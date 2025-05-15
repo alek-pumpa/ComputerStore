@@ -78,7 +78,7 @@ namespace ComputerStore.Tests.Unit.Services
 
             var basketItems = new List<BasketItemDto>
             {
-                new BasketItemDto { ProductId = 1, Quantity = 1 },
+                new BasketItemDto { ProductId = 1, Quantity = 2 },
                 new BasketItemDto { ProductId = 2, Quantity = 1 }
             };
 
